@@ -1,4 +1,5 @@
-var baseUrl = "https://l1braryapi.herokuapp.com";
+// var baseUrl = "https://l1braryapi.herokuapp.com";
+var baseUrl = "http://localhost:3001";
 var selectedRecord = null;
 var selectedRecordID = null;
 
