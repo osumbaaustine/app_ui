@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Register</title>
+</head>
+
+<body>
+    <nav class="nav__cont">
+        <ul class="nav">
+            <li class="nav__items ">
+                <i class="fa fa-home fa-3x" onclick="openHome()" aria-hidden="true"></i>
+                <a href="./index.html">Home</a>
+            </li>
+            <li class="nav__items ">
+                <i class="fa fa-user-o fa-3x" onclick="openMembers()" aria-hidden="true"></i>
+                <a href="./members.html">Members</a>
+            </li>
+            <li class="nav__items ">
+                <i class="fa fa-user-plus fa-3x" onclick="openSignIn()" aria-hidden="true"></i>
+                <a href="./signup.html">Sign Up</a>
+            </li>
+            <li class="nav__items ">
+                <i class="fa fa-sign-in fa-3x" onclick="openSignUp()" aria-hidden="true"></i>
+                <a href="./signin.html">Sign In</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="signup">
+        <form onsubmit="event.preventDefault(); onMemberSignUp();">
+            <input type="email" name="email" placeholder="Email" id="email" required /> <br>
+            <input type="text" name="name" placeholder="Name" id="name" required /> <br>
+            <input type="password" name="password" placeholder="Password" id="password" required /> <br>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./member.js"></script>
+    <script>
+        function openHome() {
+            window.location = "./index.html";
+        }
+        function openMembers() {
+            window.location = "./members.html";
+        }
+        function openSignUp() {
+            window.location = "./signup.html";
+        }
+        function openSignIn() {
+            window.location = "./signin.html";
+        }
+    </script>
+</body>
+
+</html>
