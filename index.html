@@ -40,6 +40,7 @@
         <div class="views">
             <div class="books">
                 <div class="add">
+                    <p id="info1">Edit the book below</p>
                     <form onsubmit="event.preventDefault(); submitBook();">
                         <input type="text" name="title" placeholder="Book Title" id="title" required /> <br>
                         <input type="number" name="copies" placeholder="Copies" id="copies" required /> <br>
@@ -53,6 +54,8 @@
                             <th>Book ID</th>
                             <th>Book Title</th>
                             <th>Copies</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
                             <th>Borrow</th>
                         </tr>
                     </thead>
@@ -61,6 +64,7 @@
             </div>
             <div class="borrowed">
                 <div class="borrow">
+                    <p id="info2">Enter your member ID below</p>
                     <form onsubmit="event.preventDefault(); ReqBook();">
                         <input type="number" name="titleid" placeholder="Title ID" id="titleid" required /> <br>
                         <input type="number" name="memberid" placeholder="Your Member ID" id="memberid" required /> <br>

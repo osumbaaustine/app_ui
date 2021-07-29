@@ -33,6 +33,7 @@
         </ul>
     </nav>
     <div class="members">
+        <p id="info3">Edit member information below</p>
         <form onsubmit="event.preventDefault(); editMember();">
             <input type="text" name="name" placeholder="Your name" id="name" required />
             <input type="email" name="email" placeholder="Your email" id="email" required />
@@ -60,7 +61,7 @@
                     <th>Return Date</th>
                 </tr>
             </thead>
-            <tbody class="tbody"></tbody>
+            <tbody class="tbody" id="tbody"></tbody>
         </table>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

@@ -28,7 +28,6 @@ table {
     font-size: 0.9em;
     min-width: 400px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    border-radius: 10px;
 }
 
 thead tr {
@@ -44,7 +43,6 @@ th, td {
 
 tbody tr {
     border-bottom: 1px solid #dddddd;
-    border-radius: 10px;
 }
 
 tbody tr:last-of-type {
@@ -149,4 +147,12 @@ input[type="submit"], button {
 .signup, .signin {
     margin-left: 45%;
     margin-top: 15%;
+}
+
+#info1, #info2, #info3 {
+    color: red;
+    background-color: #fff;
+    padding: 2px 7px;
+    width: max-content;
+    display: none;
 }

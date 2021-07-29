@@ -7,8 +7,27 @@ function submitBook() {
   var formData = {};
   formData["title"] = document.getElementById("title").value;
   formData["copies"] = document.getElementById("copies").value;
-  saveBook(formData);
+  if (selectedRecord == null) {
+    saveBook(formData);
+  } else {
+    updateBook(formData);
+  }
   clearBookForm();
+}
+
+function updateBook(data) {
+  var updateData = JSON.stringify(data);
+  $.ajax({
+    type: "PUT",
+    url: baseUrl + "/book/" + selectedRecordID,
+    dataType: "json",
+    data: updateData,
+    contentType: "application/json; charset=utf-8",
+    cache: false,
+    success: function () {
+      alert("Book updated");
+    },
+  });
 }
 
 function ReqBook() {
@@ -72,15 +91,51 @@ function addBookToTable(data) {
   var cell3 = newRecord.insertCell(2);
   cell3.innerHTML = data.copies;
   var cell4 = newRecord.insertCell(3);
-
   cell4.innerHTML =
+    '<a onclick="onBookEdit(this)"><i class="fa fa-pencil" aria-hidden="true"></i></a>';
+  var cell5 = newRecord.insertCell(4);
+  cell5.innerHTML =
+    '<a onclick="onBookDel(this)"><i class="fa fa-trash-o" aria-hidden="true"></i></a>';
+  var cell6 = newRecord.insertCell(5);
+  cell6.innerHTML =
     '<a onclick="onBookReq(this)"><i class="fa fa-plus" aria-hidden="true"></i></a>';
+}
+
+function onBookEdit(td) {
+  selectedRecord = td.parentElement.parentElement;
+  selectedRecordID = selectedRecord.cells[0].innerHTML;
+  document.getElementById("title").value = selectedRecord.cells[1].innerHTML;
+  document.getElementById("copies").value = selectedRecord.cells[2].innerHTML;
+  document.getElementById("info1").style.display = "block";
+}
+
+function onBookDel(td) {
+  if (confirm("Are you sure you want to delete this book")) {
+    var row = td.parentElement.parentElement;
+    deleteBook(row);
+  }
+}
+
+function deleteBook(row) {
+  $.ajax({
+    type: "DELETE",
+    url: baseUrl + "/book/" + row.cells[0].innerHTML,
+    cache: false,
+    success: function (response) {
+      if (!response.success) {
+        alert(response.message);
+      } else {
+        alert("Deleted successfully");
+      }
+    },
+  });
 }
 
 function onBookReq(td) {
   selectedRecord = td.parentElement.parentElement;
   selectedRecordID = selectedRecord.cells[0].innerHTML;
   document.getElementById("titleid").value = selectedRecord.cells[0].innerHTML;
+  document.getElementById("info2").style.display = "block";
 }
 
 function addBorrowToTable(data) {
@@ -158,8 +213,5 @@ $(document).ready(function () {
         addBorrowToTable(book);
       });
     },
-    // headers: {
-    //   Authorization: `token ${getCookie("authToken")}`,
-    // },
   });
 });

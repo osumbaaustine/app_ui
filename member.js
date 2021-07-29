@@ -135,6 +135,7 @@ function onMemberEdit(td) {
   selectedRecordID = selectedRecord.cells[0].innerHTML;
   document.getElementById("name").value = selectedRecord.cells[1].innerHTML;
   document.getElementById("email").value = selectedRecord.cells[2].innerHTML;
+  document.getElementById("info3").style.display = "block";
 }
 
 function onByOne(td) {
@@ -182,7 +183,7 @@ function getByOne(selectedRecordID) {
       if (!response.success) {
         alert(message);
       } else {
-        $("#allby tr").remove();
+        $("#tbody").empty();
         var data = response.data;
         data.forEach((book) => {
           addByOneToTable(book);
